@@ -397,4 +397,17 @@ function concat(arr1, arr2){
   }
   console.log(concat([1,2,3],[4,5,6]));
 
+////////////////////////////////////////////////////////////////////
 
+//   ARRS2MAP
+
+// Given two arrays, create an associative array (map) containing keys 
+// of the first, and values of the second. For 
+// arr1 = ["abc", 3, "yo"] and 
+// arr2 = [42, "wassup", true], 
+// return {"abc": 42, 3: "wassup", "yo": true}.
+
+// for loop that goes from left to right in arr1
+// take value of index, push to a new variable object
+// nested for loop that goes from left to right in arr2
+// take value of index, push to new variable object
