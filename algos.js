@@ -408,9 +408,28 @@ function concat(arr1, arr2){
 // return {"abc": 42, 3: "wassup", "yo": true}.
 
 // for loop that goes from left to right in arr1
-// take value of index, push to a new variable object
 // nested for loop that goes from left to right in arr2
-// take value of index, push to new variable object
+// have object, taking the index of position arr1 (which will be the key),
+// and have that equal to position in arr2
+
+var arr1 = ["abc", 3, "yo"];
+var arr2 = [42, "wassup", true];
+
+var obj = {};
+
+for (var i = 0; i < arr1.length; i++){
+  for (var j = 0; j < arr2.length; j++){
+    obj[arr1[i]] = arr2[i];
+  }
+}
+
+console.log(obj);
+
+// [object Object] {
+// 	3: "wassup",
+// 	abc: 42,
+// 	yo: true
+//   }
 
 
 ////////////////////////////////////////////////////////////////////
