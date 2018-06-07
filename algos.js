@@ -411,3 +411,14 @@ function concat(arr1, arr2){
 // take value of index, push to a new variable object
 // nested for loop that goes from left to right in arr2
 // take value of index, push to new variable object
+
+
+////////////////////////////////////////////////////////////////////
+
+// INVERT HASH
+// Create invertHash(assocArr) that converts a hash’s keys to values 
+// and values to corresponding keys. 
+// Example: 
+// Given {"name": "Zaphod", "numHeads": 2}, 
+// Return {"Zaphod": "name", 2: "numHeads"}. 
+// You will need to learn and use a JavaScript for ... in here!
