@@ -441,3 +441,208 @@ console.log(obj);
 // Given {"name": "Zaphod", "numHeads": 2}, 
 // Return {"Zaphod": "name", 2: "numHeads"}. 
 // You will need to learn and use a JavaScript for ... in here!
+
+var obj = {"name": "Zaphod", "numHeads": 2};
+var obj2 = {};
+
+for (key in obj) {
+  console.log("key is: " + key);
+  console.log("obj[key] is: " + obj[key]);
+  
+  temp = obj[key]; 
+  console.log("temp is: " + temp);
+  
+  obj2[temp] = key;
+  
+}
+
+console.log(obj2);
+
+////////////////////////////////////////////////////////////////////
+
+// JOIN2
+// Create join2(arr) that given an array of strings, return a string 
+// with all array strings combined.
+// Given [‘a’,’b’,’c’], return ‘abc’.
+
+// for loop that takes each index and pushes to new variable
+
+
+var arr1 = ['a', 'b', 'c'];
+var arr2 = '';
+
+for (var i = 0; i < arr1.length; i++){
+  arr2 += arr1[i];
+}
+
+console.log(arr2);
+
+////////////////////////////////////////////////////////////////////
+
+// SPLIT2
+// Create split2(str) that splits a string into individual strings 
+// and returns them in an array. 
+// Given ‘abc’ return [‘a’,’b’,’c’].
+
+var arr1 = 'abc';
+var arr2 = [];
+
+for (var i = 0; i < arr1.length; i++) {
+  arr2.push(arr1[i]);
+}
+
+console.log(arr2);
+
+////////////////////////////////////////////////////////////////////
+
+// REVERSESTRING
+// Implement a function reverseString(str) that, given a string, 
+// will return the string of the same length but with characters reversed. 
+// Example: given "creature", return "erutaerc". 
+// Do not use the built-in reverse() function! 
+
+function reverseString(str){
+	var str2 = '';
+	for (var i = str.length - 1; i >= 0; i--){
+	  str2 += str[i];
+	}
+	return str2;
+  }
+  
+  console.log(reverseString("creature"));
+
+////////////////////////////////////////////////////////////////////
+
+// .SPLIT3
+// Create split3(str, mark) that given a string and a mark, 
+// split the string at the mark and return an array with the split strings. 
+// Given (‘aa bb cc’, ‘ ’), return [‘aa’,’bb’,’cc’]
+// Given (‘aa bb cc’, ‘bb’), return [‘aa ’,’ cc’]
+// Given (‘aa bb cc bb dd’, ‘bb’), return [‘aa ’,’ cc ’, ‘ dd’]
+
+////////////////////////////////////////////////////////////////////
+
+// PARENS VALID
+// Create a function that, given an input string, returns a boolean whether 
+// parentheses in that string are valid. Given input "y(3(p)p(3)r)s", return true.
+//  Given "n(0(p)3", return false. Given "n)0(t(0)k", return false. 
+
+function parens(str){
+  
+	var temp = [];
+	
+	for (var i = 0; i < str.length; i++){
+	  if (str[i] == "(") {
+		temp.push("(");
+	  }
+	  if (str[i] == ")"){
+		if (temp.length === 0) {
+		  return false;
+		} else {
+		  temp.pop();
+		}
+	  }
+	}
+	if (temp.length === 0){
+	  return true;
+	} else {
+	  return false;
+	}
+	
+  };
+  
+  console.log(parens("y(3(p)p(3)r)s"));
+
+
+////////////////////////////////////////////////////////////////////
+
+// BRACES VALID
+// Given a string, returns whether the sequence of various parentheses, 
+// braces and brackets within it are valid. For example, given the input string 
+// "w(a{t}s[o(n{c}o)m]e)h[e{r}e]!", return true. Given "d(i{a}l[t]o)n{e", return false. 
+// Given "a(1)s[O(n]0{t)0}k", return false. 
+
+function parens(str){
+  
+	var temp = [];
+  
+	for (var i = 0; i < str.length; i++){
+	  
+	  if (str[i] == "(" || str[i] == "{" || str[i] == "["){
+		temp.push(str[i]);
+	  }
+	  if (str[i] == ")" || str[i] == "}" || str[i] == "]"){
+		
+		if (str[i]== ")"){
+		  if (temp[temp.length-1] == "("){
+			temp.pop();
+		  } else {
+			return false;
+		  }
+		}
+		
+		if (str[i]== "}"){
+		  if (temp[temp.length-1] == "{"){
+			temp.pop();
+		  } else {
+			return false;
+		  }
+		}
+		if (str[i]== "]"){
+		  if (temp[temp.length-1] == "["){
+			temp.pop();
+		  } else {
+			return false;
+		  }
+		}  
+	  }
+	}
+	
+	if (temp.length === 0) {
+	  return true;
+	} else {
+	  return false;
+	}
+	
+  };
+  
+  console.log(parens("w(a{t}s[o(n{c}o)m]e)h[e{r}e]!"));
+
+
+
+////////////////////////////////////////////////////////////////////
+
+// IS PALINDROME
+// Strings like "Able was I, ere I saw Elba" or "Madam, I'm Adam" 
+// could be considered palindromes, because (if we ignore spaces, 
+// 	punctuation and capitalization) the letters are the same from front and back. 
+
+// Create a function that returns a boolean whether the string is a strict palindrome. 
+// For "a x a" or "racecar", return true. Do not ignore spaces, punctuation and 
+// capitalization: if given "Dud" or "oho!", return false.
+// > Do not use reverse. 
+
+function palindrome(str){
+  
+	for (var i = 0; i < Math.floor(str.length/2); i++){
+	  if (str[i] == str[str.length - 1 - i]){
+		return true;
+	  } else {
+		return false;
+	  }
+	}
+  }
+  
+  console.log(palindrome("oho!"));
+
+  ////////////////////////////////////////////////////////////////////
+
+// LONGEST PALINDROME
+// For this challenge, we will look not only at the entire string, 
+// but also substrings within it. 
+
+// For a string, return the longest palindromic substring. 
+// Given "what up, dada?", return "dad". Given "not much", return "n". 
+// Include spaces as well (i.e. be strict, as in the “Is Palindrome” challenge): 
+// given "My favorite racecar e ded rupted!", return "e racecar e".
+// > Find the strict palindrome.
