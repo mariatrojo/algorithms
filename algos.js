@@ -646,3 +646,7 @@ function palindrome(str){
 // Include spaces as well (i.e. be strict, as in the “Is Palindrome” challenge): 
 // given "My favorite racecar e ded rupted!", return "e racecar e".
 // > Find the strict palindrome.
+
+// go through every index of string
+// check whether index - 1 matches index + 1
+// if it does, then push into new string
