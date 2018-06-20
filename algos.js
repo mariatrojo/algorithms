@@ -650,3 +650,26 @@ function palindrome(str){
 // go through every index of string
 // check whether index - 1 matches index + 1
 // if it does, then push into new string
+
+
+
+function longestPalindrome(str){
+	var str1 = "";
+  
+	for (var i = 0; i < str.length; i++){
+	  
+	  for (var j = 1; j < str.length; j++){
+		
+		if (str[i-j] == str[i+j]){
+		  str1 += str[j];
+		  
+		}
+		
+	  }
+	  
+	}
+	
+	return str1;
+  }
+  
+  console.log(longestPalindrome("a racecar"));
