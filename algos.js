@@ -652,7 +652,7 @@ function palindrome(str){
 // if it does, then push into new string
 
 
-
+//unfinished
 function longestPalindrome(str){
 	var str1 = "";
   
@@ -673,3 +673,31 @@ function longestPalindrome(str){
   }
   
   console.log(longestPalindrome("a racecar"));
+
+////////////////////////////////////////////////////////////////////
+//   SINGLY LINKED LISTS
+////////////////////////////////////////////////////////////////////
+
+//   addFront
+// Given a pointer to the first node in a list, and a value, create a new node, 
+// connect it to the head of the list, and return a pointer to the list’s new head node.
+
+
+
+////////////////////////////////////////////////////////////////////
+
+// removeFront
+// Given a pointer to the first node in a list, remove the head node and 
+// return the new list. If list is empty, return null.
+
+////////////////////////////////////////////////////////////////////
+
+// contains
+// Given a pointer to a listNode and a value, return whether value is
+//  found in any node within the list.
+
+////////////////////////////////////////////////////////////////////
+
+// front
+// Return the value (not the node) at the head of the list. 
+// If list is empty, return null.
