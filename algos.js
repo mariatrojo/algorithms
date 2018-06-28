@@ -683,6 +683,21 @@ function longestPalindrome(str){
 // connect it to the head of the list, and return a pointer to the list’s new head node.
 
 
+function ListNode(value){
+	this.val = value;
+	this.next = null;
+  }
+  
+  function addFront(node){
+	newNode = ListNode(2);
+	
+	newNode.next = node;
+	head = newNode;
+	return head;
+	
+  }
+  
+  console.log(addFront(1));
 
 ////////////////////////////////////////////////////////////////////
 
