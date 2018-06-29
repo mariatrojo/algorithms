@@ -683,21 +683,15 @@ function longestPalindrome(str){
 // connect it to the head of the list, and return a pointer to the list’s new head node.
 
 
-function ListNode(value){
-	this.val = value;
-	this.next = null;
-  }
-  
-  function addFront(node){
-	newNode = ListNode(2);
-	
-	newNode.next = node;
-	head = newNode;
-	return head;
-	
-  }
-  
-  console.log(addFront(1));
+var node2 = { val: 2, next: null };
+
+function addFront(node){
+  node2.next = node;
+  var head = node2;
+  return head;
+}
+
+console.log(addFront({ val: 1, next: null }))
 
 ////////////////////////////////////////////////////////////////////
 
@@ -705,11 +699,28 @@ function ListNode(value){
 // Given a pointer to the first node in a list, remove the head node and 
 // return the new list. If list is empty, return null.
 
+var node2 = { val: 2, next: null };
+
+function removeFront(node){
+
+  var head = node;
+  
+  head = node.next;
+  node.next = null;
+  
+  if (!head){
+    return null;
+  }
+  
+}
+
+console.log(removeFront({ val: 1, next: null }))
+
 ////////////////////////////////////////////////////////////////////
 
 // contains
 // Given a pointer to a listNode and a value, return whether value is
-//  found in any node within the list.
+// found in any node within the list.
 
 ////////////////////////////////////////////////////////////////////
 
