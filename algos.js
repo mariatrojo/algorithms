@@ -699,28 +699,37 @@ console.log(addFront({ val: 1, next: null }))
 // Given a pointer to the first node in a list, remove the head node and 
 // return the new list. If list is empty, return null.
 
-var node2 = { val: 2, next: null };
-
 function removeFront(node){
 
-  var head = node;
-  
-  head = node.next;
-  node.next = null;
-  
-  if (!head){
-    return null;
+	var head = node.next;
+	
+	if (!head){
+	  return null;
+	}
+	
+	return head;
+	
   }
   
-}
-
-console.log(removeFront({ val: 1, next: null }))
+  console.log(removeFront({ val: 1, next: { val: 2, next: null } }))
 
 ////////////////////////////////////////////////////////////////////
 
 // contains
 // Given a pointer to a listNode and a value, return whether value is
 // found in any node within the list.
+
+function contains(node, x){
+	while (node){
+	  if (node.val == x){
+		return true;
+	  } 
+	  node = node.next;
+	}
+	return false;
+  }
+  
+  console.log(contains({ val: 1, next: { val: 2, next: null } }, 3))
 
 ////////////////////////////////////////////////////////////////////
 
