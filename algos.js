@@ -745,3 +745,60 @@ function front(node){
   }
   
   console.log(front({ val: 9, next: { val: 2, next: null } }))
+
+
+////////////////////////////////////////////////////////////////////
+
+//   length
+// Create a function that accepts a pointer to first list node, 
+// and returns number of nodes in sList
+
+////////////////////////////////////////////////////////////////////
+
+// min
+// max
+// Create function min(node) and max(node) to returning 
+// smallest and largest values in the list.
+
+////////////////////////////////////////////////////////////////////
+
+// average
+// Create a standalone function average(node) that returns 
+// (…wait for it … ) the average of all values contained in that list.
+
+////////////////////////////////////////////////////////////////////
+
+// display
+// Create display(node) for debugging that returns a string containing 
+// all list values. Build what you wish console.log(myList) did!
+
+////////////////////////////////////////////////////////////////////
+
+// removeNode
+// Create removeVal(list,value) that removes from our list 
+// the node with the given value. Return the new list. 
+
+////////////////////////////////////////////////////////////////////
+
+// prependNode
+// Create prependVal(list,value,before) that inserts a listNode with 
+// given value immediately before the node with before(value) (or at end). 
+// Return the new list. 
+// (1)->(2)->(3)->(4)
+// (list, 99, 4)
+// (1)->(2)->(3)->(99)->(4)
+
+////////////////////////////////////////////////////////////////////
+
+// appendNode
+// Create appendVal(list,value,after) that inserts a new listNode with 
+// given value immediately after the node containing after (or at end). Return the new list. 
+// (1)->(2)->(3)->(4)
+// (list, 99, 4)
+// (1)->(2)->(3)->(4)->(99)
+
+////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
