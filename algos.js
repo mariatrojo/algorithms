@@ -736,3 +736,12 @@ function contains(node, x){
 // front
 // Return the value (not the node) at the head of the list. 
 // If list is empty, return null.
+
+function front(node){
+	if (!node){
+	  return false;
+	}
+	return node.val;
+  }
+  
+  console.log(front({ val: 9, next: { val: 2, next: null } }))
