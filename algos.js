@@ -753,12 +753,57 @@ function front(node){
 // Create a function that accepts a pointer to first list node, 
 // and returns number of nodes in sList
 
+function length(node){
+	var count = 0;
+	if (!node){
+	  return false;
+	}
+	while (node){
+	  count++;
+	  node = node.next;
+	}
+	return count;
+  }
+  
+  console.log(length({ val: 9, next: { val: 2, next: { val: 3, next: null } } }));
+
 ////////////////////////////////////////////////////////////////////
 
 // min
+
+function min(node){
+  var minVal = node.val;
+  var nextNode = node.next;
+
+  while(node != null){
+    if (minVal > node.val){
+      minVal = node.val;
+    }
+    node = node.next;
+  }
+  return minVal;
+}
+  
+  console.log(min({ val: 21, next: { val: 2, next: { val: 19, next: null } } }));
+
 // max
 // Create function min(node) and max(node) to returning 
 // smallest and largest values in the list.
+
+function max(node){
+	var maxVal = node.val;
+	var nextNode = node.next;
+  
+	while(node != null){
+	  if (maxVal < node.val){
+		maxVal = node.val;
+	  }
+	  node = node.next;
+	}
+	return maxVal;
+  }
+	
+	console.log(max({ val: 21, next: { val: 200, next: { val: 39, next: null } } }));
 
 ////////////////////////////////////////////////////////////////////
 
