@@ -811,17 +811,60 @@ function max(node){
 // Create a standalone function average(node) that returns 
 // (…wait for it … ) the average of all values contained in that list.
 
+function avg(node){
+	var sum = 0;
+	var count = 0;
+	while (node != null){
+	  sum += node.val;
+	  count++;
+	  node = node.next;
+	}
+	return (sum / count);
+  }
+	
+	console.log(avg({ val: 1, next: { val: 1, next: { val: 1, next: null } } }));
+
 ////////////////////////////////////////////////////////////////////
 
 // display
 // Create display(node) for debugging that returns a string containing 
 // all list values. Build what you wish console.log(myList) did!
 
+function display(node){
+	var string="";
+	while (node != null){
+	  string += node.val + " ";
+	  node = node.next;
+	}
+	return string;
+  }
+	
+	console.log(display({ val: 1, next: { val: 1, next: { val: 1, next: null } } }));
+
 ////////////////////////////////////////////////////////////////////
 
 // removeNode
 // Create removeVal(list,value) that removes from our list 
 // the node with the given value. Return the new list. 
+
+function removeNode(head, x){
+	if (head.val == x){
+	  head = head.next;
+	} else {
+	  var prev = head;
+	  var current = head.next;
+	  while (current){
+		if (current.val == x){
+		  prev.next = current.next;
+		}
+		prev = current;
+		current = prev.next;
+	  }
+	}
+	return head;
+  }
+	
+	console.log(removeNode({ val: 15, next: { val: 1, next: { val: 12, next: null } } }, 12));
 
 ////////////////////////////////////////////////////////////////////
 
@@ -832,6 +875,29 @@ function max(node){
 // (1)->(2)->(3)->(4)
 // (list, 99, 4)
 // (1)->(2)->(3)->(99)->(4)
+
+function prependNode(head, x, y){
+
+	if (head.val == y){
+	  x.next = head;
+	  head = x;
+	} else {
+	  var prev = head;
+	  var current = head.next;
+	  while (current){
+		if (current.val == y){
+		  x.next = current;
+		  prev.next = x;
+		}
+		prev = current;
+		current = prev.next;
+	  }
+	}
+	  
+	return head;
+  }
+	
+	console.log(prependNode({ val: 15, next: { val: 16, next: null }}, { val: 99, next: null }, 16));
 
 ////////////////////////////////////////////////////////////////////
 
