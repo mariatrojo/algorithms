@@ -908,6 +908,66 @@ function prependNode(head, x, y){
 // (list, 99, 4)
 // (1)->(2)->(3)->(4)->(99)
 
+function appendNode(head, x, y){
+
+	if (head.val == y){
+  
+	  x.next = head.next;
+	  head.next = x;
+	 
+	} else {
+	  
+	  var current = head.next;
+	  
+	  while (current){
+		if (current.val == y){
+		  x.next = current.next;
+		  current.next = x;
+		}
+  
+		current = current.next;
+	  }
+	}
+	  
+	return head;
+  }
+	
+	console.log(appendNode({ val: 15, next: { val: 16, next: null }}, { val: 99, next: null }, 16));
+
+////////////////////////////////////////////////////////////////////
+
+// splitOnVal
+// Create splitOnVal(list,num) that, given number, splits a list in two. 
+// The latter half of the list should be returned, starting with node 
+// containing num. E.g.: splitOnVal(5) for the list (1 >3>5>2>4) will change list to (1>3) 
+// and return value will be (5>2>4). 
+
+////////////////////////////////////////////////////////////////////
+
+// partition
+// Create partition(list,value) that locates the first node with that value, 
+// and moves all nodes with values less than that value to be earlier, 
+// and all nodes with values greater than that value to be later. 
+// Otherwise, original order need not be perfectly preserved. 
+// (2)(5)(4)(1)(3)(6)
+// (2)(1)(3)(4)(5)(6)
+
+////////////////////////////////////////////////////////////////////
+
+// deleteGivenNode
+// Create listNode method removeSelf() to disconnect (remove) itself from 
+// linked lists that include it. Note: the node might be the first in a list, 
+// and you do NOT have a pointer to the previous node. 
+// Also, don’t lose any subsequent nodes pointed to by .next.
+// (1)(2)(3)(4)(5)
+// { val: 3, next: node4, removeSelf: function(){     } }
+// (1)(2)(4)(5)
+
+
+////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////////////
