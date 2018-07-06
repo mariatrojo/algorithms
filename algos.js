@@ -942,6 +942,30 @@ function appendNode(head, x, y){
 // containing num. E.g.: splitOnVal(5) for the list (1 >3>5>2>4) will change list to (1>3) 
 // and return value will be (5>2>4). 
 
+function splitOnVal(head, x){
+	var prev = head;
+	var current = head.next;
+	var head2;
+	
+	if (head.val === x){
+		return head;
+	  
+	} else {
+	  
+	  while (current){
+		if (current.val === x){
+		  prev.next = null;
+		  head2 = current;
+		}
+		prev = current;
+		current = prev.next;
+	  }
+	}
+	return head2;
+  }
+	
+	console.log(splitOnVal({ val: 1, next: { val: 2, next: { val: 3, next: null}}}, 3));
+
 ////////////////////////////////////////////////////////////////////
 
 // partition
