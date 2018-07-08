@@ -976,6 +976,27 @@ function splitOnVal(head, x){
 // (2)(5)(4)(1)(3)(6)
 // (2)(1)(3)(4)(5)(6)
 
+function partition(head, x){
+	var current = head;
+	var value;
+	while (current != null){
+	  if (current.val == x){
+		value = current;
+	  }
+	  current = current.next;
+	}
+	current = head;
+	while (current != null){
+	  if (current.val > x){
+		current.next = value.next;
+		value.next = current.next;
+	  }
+	}
+	return head;
+  }
+	  
+	  console.log(partition({ val: 3, next: { val: 2, next: { val: 1, next: null}}}, 2));
+
 ////////////////////////////////////////////////////////////////////
 
 // deleteGivenNode
