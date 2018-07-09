@@ -988,9 +988,10 @@ function partition(head, x){
 	current = head;
 	while (current != null){
 	  if (current.val > x){
+        value.next = current;
 		current.next = value.next;
-		value.next = current.next;
 	  }
+      current = current.next;
 	}
 	return head;
   }
