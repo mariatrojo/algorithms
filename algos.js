@@ -982,17 +982,22 @@ function partition(head, x){
 	while (current != null){
 	  if (current.val == x){
 		value = current;
+        break;
 	  }
 	  current = current.next;
 	}
-	current = head;
-	while (current != null){
-	  if (current.val > x){
-        value.next = current;
-		current.next = value.next;
-	  }
-      current = current.next;
-	}
+
+  var originalHead = head;
+  current = head;
+  if (current.val > x){
+
+    head = current.next;
+    current.next = value.next;
+    head.next = current;
+    
+  }
+  
+
 	return head;
   }
 	  
