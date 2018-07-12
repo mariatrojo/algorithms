@@ -30,22 +30,22 @@ var newVal = new dlNode(5);
 
 
 
-function prepend(list, newVal, existVal){
-	var current = list.head;
+function kthToLast(list, value){
 	var counter = 0;
-	
-	while (current){
-		if (current.val === existVal){
-			newVal.prev = current.prev;
-			newVal.next = current;
-			current.prev.next = newVal;
-			current.prev = newVal;
+	var current = list.tail;
+
+	while (current.prev){
+		if (counter === value){
+			return current.val;
 		}
-		current = current.next;
+		current = current.prev;
+		counter++;
 	}
-	return list;
+
+	
+
 }
 
-console.log(prepend(list, newVal, 3));
+console.log(kthToLast(list, 1));
 
 </script>>
