@@ -678,6 +678,31 @@ function longestPalindrome(str){
 //   SINGLY LINKED LISTS
 ////////////////////////////////////////////////////////////////////
 
+// CONSTRUCTORS //
+
+function listNode(value){
+	this.val = value;
+	this.next = null;
+}
+
+function SLList(){
+	this.head = null;
+}
+
+var node1 = new listNode(1);
+var node2 = new listNode(2);
+var node3 = new listNode(3);
+
+node1.next = node2;
+node2.next = node3;
+
+var list = new SLList();
+list.head = node1;
+
+console.log(list);
+
+////////////////////////////////////////////////////////////////////
+
 //   addFront
 // Given a pointer to the first node in a list, and a value, create a new node, 
 // connect it to the head of the list, and return a pointer to the list’s new head node.
@@ -979,46 +1004,75 @@ function splitOnVal(head, x){
 // PSEUDOCODE
 // value: 3
 
+// run only as many times as the length is
+
 // (2)(5)(4)(1)(3)(6)
-// first node is less than, move it before value and make head = first node.next
+// current (2) is less than (3), move it before value and make current = current.next
+// and previous node before value, make previous.next point to current
 // (5)(4)(1)(2)(3)(6)
-// 
 // (4)(1)(2)(3)(5)(6)
 // (1)(2)(3)(4)(5)(6)
 // (2)(1)(3)(4)(5)(6)
 
-function partition(list, value){
-	var foundVal;
+node1 = {val: 2, next: null};
+node2 = {val: 5, next: null};
+node3 = {val: 4, next: null};
+node4 = {val: 1, next: null};
+node5 = {val: 3, next: null};
+node6 = {val: 6, next: null};
+
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+node4.next = node5;
+node5.next = node6;
+
+var list = node1;
+
+function partition(list, x){
+
 	var current = list;
-	while (current){
-	  if (current.val == value){
-		foundVal = current;
-	  }
-	  current = current.next;
+	var value;
+	var counter = 1;
+	var previous;
+	var pointer;
+
+	// get node where value exists, and count number of nodes
+	while (current && current.next){
+		if (current.next.val === x){
+			previous = current;
+			value = current.next;
+		}
+		counter++;
+		current = current.next;
 	}
-	
+
 	current = list;
-  
-	while (current){
-	  if (current.val > value){
-		foundVal.next = current;
-		current.next = null;
-		list = foundVal;
-		
-	  } else if (current.val < value){
-		
-		current.next = foundVal;
-		foundVal.next = null;
-		list = current;
-	  }
-	  current = current.next;
-	}
-  
 	
+	while (current && (counter > 0)){
+		if (current.val > x){
+			console.log(current.val + " is greater than " + x);
+
+
+
+		} else if (current.val < x) {
+			console.log(current.val + " is less than " + x);
+
+
+
+		} else if (current.val === x){
+			console.log(current.val + " our value!");
+
+
+
+		}
+		current = current.next;
+		counter--;
+	}
 	return list;
-  }
-  
-  console.log(partition({val: 3, next: {val: 1, next: null}}, 3));
+}
+
+console.log(partition(list, 3));
 
 ////////////////////////////////////////////////////////////////////
 
@@ -1034,10 +1088,77 @@ function partition(list, value){
 
 ////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////
+// DOUBLY LINKED LISTS
+
+// Prepend Value
+// Given dList, new value, and existing value, 
+// insert new val into dList immediately before existing val. 
+
+function dlNode(value){
+	this.val = value;
+	this.next = null;
+	this.prev = null;
+}
+
+function dlList(){
+	this.head = null;
+	this.tail = null;
+}
+
+var node1 = new dlNode(1);
+var node2 = new dlNode(2);
+var node3 = new dlNode(3);
+
+node1.next = node2;
+node2.prev = node1;
+node2.next = node3;
+node3.prev = node2;
+
+var list = new dlList();
+list.head = node1;
+list.tail = node3;
+
+///////
+
+var newVal = new dlNode(5);
+
+
+
+function prepend(list, newVal, existVal){
+	var current = list.head;
+	var counter = 0;
+	
+	while (current){
+		if (current.val === existVal){
+			newVal.prev = current.prev;
+			newVal.next = current;
+			current.prev.next = newVal;
+			current.prev = newVal;
+		}
+		current = current.next;
+	}
+	return list;
+}
+
+console.log(prepend(list, newVal, 3));
 
 ////////////////////////////////////////////////////////////////////
 
+// Kth To Last Value
+// Given k, return the value ‘k’ from a dList’s end. 
+// (1)->(2)->(*)->(3) - first to last
+
 ////////////////////////////////////////////////////////////////////
+
+// *Is Valid dList
+// Determine whether given dList is well-formed and valid: 
+// whether next and prev pointers match, etc. 
+
+
+////////////////////////////////////////////////////////////////////
+
+// Palindrome
+// Determine whether a dList is a palindrome
+
 
 ////////////////////////////////////////////////////////////////////

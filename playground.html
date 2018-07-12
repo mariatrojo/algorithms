@@ -1,77 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
 <script>
-	// partition - UNFINISHED
-// Create partition(list,value) that locates the first node with that value, 
-// and moves all nodes with values less than that value to be earlier, 
-// and all nodes with values greater than that value to be later. 
-// Otherwise, original order need not be perfectly preserved. 
-// (2)(5)(4)(1)(3)(6)
-// (2)(1)(3)(4)(5)(6)
 
-// value: 3
+function dlNode(value){
+	this.val = value;
+	this.next = null;
+	this.prev = null;
+}
 
-// run only as many times as the length is
+function dlList(){
+	this.head = null;
+	this.tail = null;
+}
 
-// (2)(5)(4)(1)(3)(6)
-// current (2) is less than (3), move it before value and make current = current.next
-// and previous node before value, make previous.next point to current
-// (5)(4)(1)(2)(3)(6)
-// (4)(1)(2)(3)(5)(6)
-// (1)(2)(3)(4)(5)(6)
-// (2)(1)(3)(4)(5)(6)
-
-node1 = {val: 2, next: null};
-node2 = {val: 5, next: null};
-node3 = {val: 4, next: null};
-node4 = {val: 1, next: null};
-node5 = {val: 3, next: null};
-node6 = {val: 6, next: null};
+var node1 = new dlNode(1);
+var node2 = new dlNode(2);
+var node3 = new dlNode(3);
 
 node1.next = node2;
+node2.prev = node1;
 node2.next = node3;
-node3.next = node4;
-node4.next = node5;
-node5.next = node6;
+node3.prev = node2;
 
-var list = node1;
+var list = new dlList();
+list.head = node1;
+list.tail = node3;
 
-function partition(list, x){
+///////
 
-	var current = list;
-	var value;
-	var counter = 1;
+var newVal = new dlNode(5);
 
-	// get node where value exists, and count number of nodes
-	while (current && current.next){
-		if (current.val === x){
-			value = current;
-			
+
+
+function prepend(list, newVal, existVal){
+	var current = list.head;
+	var counter = 0;
+	
+	while (current){
+		if (current.val === existVal){
+			newVal.prev = current.prev;
+			newVal.next = current;
+			current.prev.next = newVal;
+			current.prev = newVal;
 		}
-		counter++;
 		current = current.next;
 	}
-	
-	//reset current to first node
-	current = list;
-
-	while (current && current.next){
-		
-	}
-	
 	return list;
 }
 
-console.log(partition(list, 3));
+console.log(prepend(list, newVal, 3));
 
-</script>
-<body>
-	
-</body>
-</html>
+</script>>
