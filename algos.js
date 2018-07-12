@@ -968,7 +968,7 @@ function splitOnVal(head, x){
 
 ////////////////////////////////////////////////////////////////////
 
-// partition
+// partition - UNFINISHED
 // Create partition(list,value) that locates the first node with that value, 
 // and moves all nodes with values less than that value to be earlier, 
 // and all nodes with values greater than that value to be later. 
@@ -976,32 +976,49 @@ function splitOnVal(head, x){
 // (2)(5)(4)(1)(3)(6)
 // (2)(1)(3)(4)(5)(6)
 
-function partition(head, x){
-	var current = head;
-	var value;
-	while (current != null){
-	  if (current.val == x){
-		value = current;
-        break;
+// PSEUDOCODE
+// value: 3
+
+// (2)(5)(4)(1)(3)(6)
+// first node is less than, move it before value and make head = first node.next
+// (5)(4)(1)(2)(3)(6)
+// 
+// (4)(1)(2)(3)(5)(6)
+// (1)(2)(3)(4)(5)(6)
+// (2)(1)(3)(4)(5)(6)
+
+function partition(list, value){
+	var foundVal;
+	var current = list;
+	while (current){
+	  if (current.val == value){
+		foundVal = current;
 	  }
 	  current = current.next;
 	}
-
-  var originalHead = head;
-  current = head;
-  if (current.val > x){
-
-    head = current.next;
-    current.next = value.next;
-    head.next = current;
-    
+	
+	current = list;
+  
+	while (current){
+	  if (current.val > value){
+		foundVal.next = current;
+		current.next = null;
+		list = foundVal;
+		
+	  } else if (current.val < value){
+		
+		current.next = foundVal;
+		foundVal.next = null;
+		list = current;
+	  }
+	  current = current.next;
+	}
+  
+	
+	return list;
   }
   
-
-	return head;
-  }
-	  
-	  console.log(partition({ val: 3, next: { val: 2, next: { val: 1, next: null}}}, 2));
+  console.log(partition({val: 3, next: {val: 1, next: null}}, 3));
 
 ////////////////////////////////////////////////////////////////////
 
