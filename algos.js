@@ -1014,12 +1014,21 @@ function splitOnVal(head, x){
 // (1)(2)(3)(4)(5)(6)
 // (2)(1)(3)(4)(5)(6)
 
-node1 = {val: 2, next: null};
-node2 = {val: 5, next: null};
-node3 = {val: 4, next: null};
-node4 = {val: 1, next: null};
-node5 = {val: 3, next: null};
-node6 = {val: 6, next: null};
+function node(value){
+	this.val = value;
+	this.next = null;
+}
+
+function slList(){
+	this.head = null;
+}
+
+var node1 = new node(2);
+var node2 = new node(5);
+var node3 = new node(4);
+var node4 = new node(1);
+var node5 = new node(3);
+var node6 = new node(6);
 
 node1.next = node2;
 node2.next = node3;
@@ -1027,11 +1036,12 @@ node3.next = node4;
 node4.next = node5;
 node5.next = node6;
 
-var list = node1;
+var list = new slList();
+list.head = node1;
 
 function partition(list, x){
 
-	var current = list;
+	var current = list.head;
 	var value;
 	var counter = 1;
 	var previous;
@@ -1047,28 +1057,22 @@ function partition(list, x){
 		current = current.next;
 	}
 
-	current = list;
+	current = list.head;
 	
 	while (current && (counter > 0)){
-		if (current.val > x){
-			console.log(current.val + " is greater than " + x);
+		if (current.val < x) {
 
+			list = current.next;
 
-
-		} else if (current.val < x) {
-			console.log(current.val + " is less than " + x);
-
-
-
-		} else if (current.val === x){
-			console.log(current.val + " our value!");
-
-
-
+			current.next = value;
+			previous.next = current;
+		} else {
+			current = current.next;
 		}
-		current = current.next;
+		current = list;
 		counter--;
 	}
+
 	return list;
 }
 
