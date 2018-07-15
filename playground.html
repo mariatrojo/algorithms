@@ -48,19 +48,24 @@ function partition(list, x){
 	while (current && (counter > 0)){
 		if (current.val < x) {
 
-			list = current.next;
+			list.head = current.next;
 
 			current.next = value;
 			previous.next = current;
 			
-		} else {
-			current = current.next;
-		}
+		} 
+		// if (current.val > x) {
+		// 	list.head = current.next;
+
+		// 	current.next = value.next;
+		// 	value.next = current;
+
+		// }
 
 		current = list.head;
 		counter--;
+		
 	}
-
 
 	return list;
 }
