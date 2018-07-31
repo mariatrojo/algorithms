@@ -1067,19 +1067,18 @@ function partition(list, x){
 			current.next = value;
 			previous.next = current;
 			
-		} else {
-			current = current.next;
-		}
+		} 
+		if (current.val > x) {
+			list.head = current.next;
 
-		// if (current.val > x){
-		// 	current.next = value.next;
-		// 	value.next = current;
-		// } else {
-		// 	current = current.next;
-		// }
+			current.next = value.next;
+			value.next = current;
+
+		}
 
 		current = list.head;
 		counter--;
+		
 	}
 
 	return list;
@@ -1242,5 +1241,11 @@ console.log(isValid(list));
 // Palindrome
 // Determine whether a dList is a palindrome
 
+
+////////////////////////////////////////////////////////////////////
+
+// *Loop Start
+// Given a dList that may contain a loop, return a pointer 
+// to the node where the loop begins (or null if no loop).
 
 ////////////////////////////////////////////////////////////////////
