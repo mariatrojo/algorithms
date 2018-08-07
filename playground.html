@@ -34,7 +34,7 @@ function isValid(list){
 	if (list.head.prev != null || list.tail.next != null){
 		return false;
 	} 
-	while (current.prev){
+	while (current.next){
 		if (current != next.prev){
 			return false;
 		}

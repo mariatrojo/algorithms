@@ -1230,7 +1230,19 @@ list.head = node1;
 list.tail = node3;
 
 function isValid(list){
-	return list;
+	var current = list.head;
+	var next = current.next;
+	if (list.head.prev != null || list.tail.next != null){
+		return false;
+	} 
+	while (current.next){
+		if (current != next.prev){
+			return false;
+		}
+		current = current.next;
+		next = current.next;
+	}
+	return true;
 }
 
 console.log(isValid(list));
