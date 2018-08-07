@@ -1,5 +1,9 @@
 <script>
 
+// *Is Valid dList UNFINISHED
+// Determine whether given dList is well-formed and valid: 
+// whether next and prev pointers match, etc. 
+
 function dlNode(value){
 	this.val = value;
 	this.next = null;
@@ -24,19 +28,22 @@ var list = new dlList();
 list.head = node1;
 list.tail = node3;
 
-function kthToLast(list, value){
-	var counter = 1;
-	var current = list.tail;
-
-	while (current){
-		if (counter === value){
-			return current.val;
+function isValid(list){
+	var current = list.head;
+	var next = current.next;
+	if (list.head.prev != null || list.tail.next != null){
+		return false;
+	} 
+	while (current.prev){
+		if (current != next.prev){
+			return false;
 		}
-		current = current.prev;
-		counter++;
+		current = current.next;
+		next = current.next;
 	}
+	return true;
 }
 
-console.log(kthToLast(list, 3));
+console.log(isValid(list));
 
 </script>>
