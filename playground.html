@@ -1,71 +1,42 @@
 <script>
 
-function node(value){
+function dlNode(value){
 	this.val = value;
 	this.next = null;
+	this.prev = null;
 }
 
-function slList(){
+function dlList(){
 	this.head = null;
+	this.tail = null;
 }
 
-var node1 = new node(4);
-var node2 = new node(3);
-var node3 = new node(1);
-
+var node1 = new dlNode(1);
+var node2 = new dlNode(2);
+var node3 = new dlNode(3);
 
 node1.next = node2;
+node2.prev = node1;
 node2.next = node3;
+node3.prev = node2;
 
-var list = new slList();
+var list = new dlList();
 list.head = node1;
+list.tail = node3;
 
-function partition(list, x){
-
-	var current = list.head;
-	var value;
+function kthToLast(list, value){
 	var counter = 1;
-	var previous;
-	var pointer;
+	var current = list.tail;
 
-	// get node where value exists, and count number of nodes
-	while (current && current.next){
-		if (current.next.val === x){
-			previous = current;
-			value = current.next;
+	while (current){
+		if (counter === value){
+			return current.val;
 		}
+		current = current.prev;
 		counter++;
-		current = current.next;
 	}
-
-	current = list.head;
-	
-	
-	while (current && (counter > 0)){
-		if (current.val < x) {
-
-			list.head = current.next;
-
-			current.next = value;
-			previous.next = current;
-			
-		} 
-		if (current.val > x) {
-			list.head = current.next;
-
-			current.next = value.next;
-			value.next = current;
-
-		}
-
-		current = list.head;
-		counter--;
-		
-	}
-
-	return list;
 }
 
-console.log(partition(list, 3));
+console.log(kthToLast(list, 3));
 
 </script>>

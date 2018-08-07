@@ -1185,10 +1185,10 @@ list.head = node1;
 list.tail = node3;
 
 function kthToLast(list, value){
-	var counter = 0;
+	var counter = 1;
 	var current = list.tail;
 
-	while (current.prev){
+	while (current){
 		if (counter === value){
 			return current.val;
 		}
