@@ -1253,6 +1253,36 @@ console.log(isValid(list));
 // Palindrome
 // Determine whether a dList is a palindrome
 
+function dlNode(value){
+	this.val = value;
+	this.next = null;
+	this.prev = null;
+}
+
+function dlList(){
+	this.head = null;
+	this.tail = null;
+}
+
+var node1 = new dlNode(1);
+var node2 = new dlNode(2);
+var node3 = new dlNode(3);
+
+node1.next = node2;
+node2.prev = node1;
+node2.next = node3;
+node3.prev = node2;
+
+var list = new dlList();
+list.head = node1;
+list.tail = node3;
+
+function dlPalindrome(list){
+	return true
+}
+
+console.log(dlPalindrome(list));
+
 
 ////////////////////////////////////////////////////////////////////
 
