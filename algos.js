@@ -1253,6 +1253,14 @@ console.log(isValid(list));
 // Palindrome
 // Determine whether a dList is a palindrome
 
+// first run a counter to find out how long the dll is
+// divide that number in 2
+
+// one loop that starts at head
+// second loop that starts at tail
+// check if they match. if they do, 
+// then move one runner up, and a second runner down
+
 function dlNode(value){
 	this.val = value;
 	this.next = null;
@@ -1266,19 +1274,39 @@ function dlList(){
 
 var node1 = new dlNode(1);
 var node2 = new dlNode(2);
-var node3 = new dlNode(3);
+var node3 = new dlNode(2);
+var node4 = new dlNode(1);
 
 node1.next = node2;
 node2.prev = node1;
 node2.next = node3;
 node3.prev = node2;
+node3.next = node4;
+node4.prev = node3;
 
 var list = new dlList();
 list.head = node1;
-list.tail = node3;
+list.tail = node4;
 
 function dlPalindrome(list){
-	return true
+	var current = list.head;
+	var counter = 1;
+	var runner1 = list.head;
+	var runner2 = list.tail;
+	while (current.next){
+		counter++;
+		current = current.next;
+	}
+	counter = counter / 2;
+	while (counter){
+		if (runner1.val != runner2.val){
+			return false;
+		}
+		runner1 = runner1.next;
+		runner2 = runner2.prev;
+		counter--;
+	}
+	return true;
 }
 
 console.log(dlPalindrome(list));
