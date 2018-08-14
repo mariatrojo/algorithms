@@ -1,14 +1,8 @@
 <script>
 
-// Palindrome
-// Determine whether a dList is a palindrome
-
-// first run a counter to find out how long the dll is
-
-// one loop that starts at head
-// second loop that starts at tail
-// check if they match. if they do, 
-// then move one runner up, and a second runner down
+// *Loop Start
+// Given a dList that may contain a loop, return a pointer 
+// to the node where the loop begins (or null if no loop).
 
 function dlNode(value){
 	this.val = value;
@@ -37,26 +31,9 @@ var list = new dlList();
 list.head = node1;
 list.tail = node4;
 
-function dlPalindrome(list){
-	var current = list.head;
-	var counter = 1;
-	var runner1 = list.head;
-	var runner2 = list.tail;
-	while (current.next){
-		counter++;
-		current = current.next;
-	}
-	counter = counter / 2;
-	while (counter){
-		if (runner1.val != runner2.val){
-			return false;
-		}
-		runner1 = runner1.next;
-		runner2 = runner2.prev;
-		counter--;
-	}
-	return true;
+function dlLoopStart(list){
+	
 }
 
-console.log(dlPalindrome(list));
+console.log(dlLoopStart(list));
 </script>

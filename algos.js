@@ -1297,7 +1297,7 @@ function dlPalindrome(list){
 		counter++;
 		current = current.next;
 	}
-	counter = counter / 2;
+	counter = Math.floor(counter / 2);
 	while (counter){
 		if (runner1.val != runner2.val){
 			return false;
