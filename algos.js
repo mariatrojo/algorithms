@@ -1356,10 +1356,54 @@ console.log(dlPalindrome(list));
 ////////////////////////////////////////////////////////////////////
 
 // QUEUES
+// First in, first out
 
-// SLQueue: Enqueue
-////////////////////////////////////////////////////////////////////
-// SLQueue: Dequeue
+// SLQueue: Enqueue * Dequeue
+
+function Node(val){
+	this.val = val;
+	this.next = null;
+}
+
+function Queue(){
+	this.head = null;
+	this.tail = null;
+	this.enqueue = function(val){
+		var nn = new Node(val);
+		// if queue is empty, then head and tail point to same node
+		if (this.head === null){
+			this.head = nn;
+			this.tail = nn;
+		} else {
+			// connect tail to new node
+			this.tail.next = nn;
+			// reassign tail to new node
+			this.tail = nn;
+		}
+		return this;
+	}
+	this.display = function(){
+		var current = this.head;
+		while(current){
+			console.log(current.val);
+			current = current.next;
+		}
+	}
+	this.dequeue = function(){
+		if(this.head){
+			var temp = this.head.val;
+			this.head = this.head.next;
+			return temp;
+		}
+		return false;
+	}
+}
+
+q1 = new Queue();
+q1.enqueue(12).enqueue(42).dequeue();
+
+q1.display();
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Front
 ////////////////////////////////////////////////////////////////////
@@ -1375,6 +1419,15 @@ console.log(dlPalindrome(list));
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Interleave Queue*
 ////////////////////////////////////////////////////////////////////
+
+// STACKS
+// Last in, first out
+
+// create a node
+// do we need to determine if the stack is empty
+// connect the new node.next to hwat is currently stored at top
+// point the top attribute to my new node
+
 // SLStack: Push
 ////////////////////////////////////////////////////////////////////
 // SLStack: Pop
