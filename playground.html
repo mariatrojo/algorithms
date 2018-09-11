@@ -37,12 +37,43 @@
 			}
 			return false;
 		}
+		this.front = function(){
+			if(this.head){
+				console.log(this.head.val);
+			}
+		}
+		this.contains = function(val){
+			var current = this.head;
+			while(current){
+				if(current.val == val){
+					return true;
+				}
+				current = current.next;
+			}
+			return false;
+		}
+		this.isEmpty = function(val){
+			if(!this.head){
+				return false;
+			} else {
+				return true;
+			}
+		}
+		this.queueSize = function(){
+			var current = this.head;
+			var counter = 0;
+			while(current){
+				counter++;
+				current = current.next;
+			}
+			return counter;
+		}
 	}
 
 	q1 = new Queue();
-	q1.enqueue(12).enqueue(42).dequeue();
-
-	q1.display();
+	q1.enqueue(22).enqueue(42);
+	console.log(q1.queueSize());
+	// q1.display();
 
 
 

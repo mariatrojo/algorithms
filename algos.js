@@ -1406,12 +1406,76 @@ q1.display();
 
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Front
+function Node(val){
+	this.val = val;
+	this.next = null;
+}
+
+function Queue(){
+	this.head = null;
+	this.tail = null;
+	this.enqueue = function(val){
+		var nn = new Node(val);
+		if (this.head === null){
+			this.head = nn;
+			this.tail = nn;
+		} else {
+			this.tail.next = nn;
+			this.tail = nn;
+		}
+		return this;
+	}
+	this.front = function(){
+		if(this.head){
+			console.log(this.head.val);
+		}
+	}
+}
+
+q1 = new Queue();
+q1.enqueue(22).enqueue(42).enqueue(20);
+q1.front();
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Contains
+
+this.contains = function(val){
+	var current = this.head;
+	while(current){
+		if(current.val == val){
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+}
+q1 = new Queue();
+q1.enqueue(22).enqueue(42).enqueue(20);
+console.log(q1.contains(30));
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: IsEmpty
+
+this.isEmpty = function(val){
+	if(!this.head){
+		return false;
+	} else {
+		return true;
+	}
+}
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Size
+
+this.queueSize = function(){
+	var current = this.head;
+	var counter = 0;
+	while(current){
+		counter++;
+		current = current.next;
+	}
+	return counter;
+}
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Compare Queues
 ////////////////////////////////////////////////////////////////////
