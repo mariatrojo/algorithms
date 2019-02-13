@@ -5,12 +5,12 @@
 		this.next = null;
 	}
 
-	function Queue(){
+	function Stack(){
 		this.head = null;
 		this.tail = null;
-		this.enqueue = function(val){
+		this.push = function(val){
 			var nn = new Node(val);
-			// if queue is empty, then head and tail point to same node
+			// if stack is empty, then head and tail point to same node
 			if (this.head === null){
 				this.head = nn;
 				this.tail = nn;
@@ -29,37 +29,43 @@
 				current = current.next;
 			}
 		}
-		this.dequeue = function(){
-			if(this.head){
-				var temp = this.head.val;
-				this.head = this.head.next;
-				return temp;
+		this.pop = function(){
+			if (this.head === this.tail){
+				this.head = null;
+				return this.head;
+			} else if (this.head.next === this.tail) {
+				this.head.next = null;
+				return this.head.val;
 			}
-			return false;
+			var prev = this.head;
+			while (prev && prev.next != this.tail){
+				prev = prev.next;
+			}
+			prev.next = null;
+			this.tail = prev;
 		}
-		this.front = function(){
-			if(this.head){
-				console.log(this.head.val);
+		this.top = function(){
+			if (this.head){
+				return this.tail.val;
 			}
 		}
-		this.contains = function(val){
+		this.contains = function(num){
 			var current = this.head;
-			while(current){
-				if(current.val == val){
+			while (current) {
+				if (current.val === num){
 					return true;
 				}
 				current = current.next;
 			}
 			return false;
 		}
-		this.isEmpty = function(val){
-			if(!this.head){
-				return false;
-			} else {
+		this.isEmpty = function(){
+			if(this.head){
 				return true;
 			}
+			return false;
 		}
-		this.queueSize = function(){
+		this.sizeStack = function(){
 			var current = this.head;
 			var counter = 0;
 			while(current){
@@ -70,11 +76,28 @@
 		}
 	}
 
-	q1 = new Queue();
-	q1.enqueue(22).enqueue(42);
-	console.log(q1.queueSize());
+	q1 = new Stack();
+	q1.push(1).push(2).push(3).push(5);
+	// console.log(q1.sizeStack());
 	// q1.display();
+	
+	q2 = new Stack();
+	q2.push(4).push(2).push(3).push(5);
 
+	function compareStack(q1, q2){
+		var current1 = q1.head;
+		var current2 = q2.head;
+		while (current1 && current2){
+			if (current1.val != current2.val){
+				return false;
+			} else {
+				current1 = current1.next;
+				current2 = current2.next;
+			}
+		}
+		return true;
+	}
+	console.log(compareStack(q1, q2));
 
 
 </script>

@@ -1478,8 +1478,48 @@ this.queueSize = function(){
 
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Compare Queues
+
+q1 = new Queue();
+q1.enqueue(22).enqueue(42).enqueue(4);
+
+q2 = new Queue();
+q2.enqueue(22).enqueue(42).enqueue(43);
+
+// console.log(q1.queueSize());
+// q1.display();
+
+function compareQueues(q1, q2){
+	var current1 = q1.head;
+	var current2 = q2.head;
+	while (current1 && current2){
+		if (current1.val != current2.val){
+			return false;
+		} else {
+			current1 = current1.next;
+			current2 = current2.next;
+		}
+	}
+	return true;
+}
+console.log(compareQueues(q1, q2));
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Remove Minimums
+
+function removeMin(q1){
+	var current = q1.head;
+	var min = current.val;
+	while (current && current.next){
+		if (min > current.next.val){
+			min = current.next.val;
+		}
+		current = current.next;
+	}
+	return min;
+}
+
+console.log(removeMin(q1));
+
 ////////////////////////////////////////////////////////////////////
 // SLQueue: Interleave Queue*
 ////////////////////////////////////////////////////////////////////
@@ -1493,16 +1533,127 @@ this.queueSize = function(){
 // point the top attribute to my new node
 
 // SLStack: Push
+
+function Node(val){
+	this.val = val;
+	this.next = null;
+}
+
+function Stack(){
+	this.head = null;
+	this.tail = null;
+	this.push = function(val){
+		var nn = new Node(val);
+		// if stack is empty, then head and tail point to same node
+		if (this.head === null){
+			this.head = nn;
+			this.tail = nn;
+		} else {
+			// connect tail to new node
+			this.tail.next = nn;
+			// reassign tail to new node
+			this.tail = nn;
+		}
+		return this;
+	}
+	this.display = function(){
+		var current = this.head;
+		while(current){
+			console.log(current.val);
+			current = current.next;
+		}
+	}
+}
+
+q1 = new Stack();
+q1.push(1).push(2).push(3);
+
+q1.display();
 ////////////////////////////////////////////////////////////////////
 // SLStack: Pop
+
+this.pop = function(){
+	if (this.head === this.tail){
+		this.head = null;
+		return this.head;
+	} else if (this.head.next === this.tail) {
+		this.head.next = null;
+		return this.head.val;
+	}
+	var prev = this.head;
+	while (prev && prev.next != this.tail){
+		prev = prev.next;
+	}
+	prev.next = null;
+	this.tail = prev;
+}
+
+q1 = new Stack();
+q1.push(1).push(2).push(3).push(4).push(5);
+// q1.pop();
+console.log(q1.pop());
+q1.display();
+
 ////////////////////////////////////////////////////////////////////
 // SLStack: Top
+
+this.top = function(){
+	if (this.head){
+		return this.tail.val;
+	}
+}
+
 ////////////////////////////////////////////////////////////////////
 // SLStack: Contains
+
+this.contains = function(num){
+	var current = this.head;
+	while (current) {
+		if (current.val === num){
+			return true;
+		}
+		current = current.next;
+	}
+	return false;
+}
+
 ////////////////////////////////////////////////////////////////////
 // SLStack: IsEmpty
+
+this.isEmpty = function(){
+	if(this.head){
+		return true;
+	}
+	return false;
+}
 ////////////////////////////////////////////////////////////////////
 // SLStack: Size
+
+this.sizeStack = function(){
+	var current = this.head;
+	var counter = 0;
+	while(current){
+		counter++;
+		current = current.next;
+	}
+	return counter;
+}
+
 ////////////////////////////////////////////////////////////////////
 // SLStack: Compare Stacks
+
+function compareStack(q1, q2){
+	var current1 = q1.head;
+	var current2 = q2.head;
+	while (current1 && current2){
+		if (current1.val != current2.val){
+			return false;
+		} else {
+			current1 = current1.next;
+			current2 = current2.next;
+		}
+	}
+	return true;
+}
+
 ////////////////////////////////////////////////////////////////////
